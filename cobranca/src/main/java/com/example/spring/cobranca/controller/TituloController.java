@@ -15,6 +15,7 @@ import com.example.spring.cobranca.model.Titulo;
 import com.example.spring.cobranca.repository.Titulos;
 
 
+
 @Controller
 @RequestMapping("/titulos")
 public class TituloController {
@@ -34,6 +35,14 @@ public class TituloController {
 		
 		ModelAndView mv = new ModelAndView("CadastroTitulo");
 		mv.addObject("mensagem", "Título salvo com sucesso!");
+		return mv;
+	}
+	
+	@RequestMapping
+	public ModelAndView pesquisar() {
+		List<Titulo> todosTitulos = titulos.findAll();
+		ModelAndView mv = new ModelAndView("PesquisaTitulos");
+		mv.addObject("titulos", todosTitulos);
 		return mv;
 	}
 	
